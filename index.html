@@ -627,8 +627,37 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .socials a{width:44px;height:44px;border-radius:12px}
   .socials svg{width:18px;height:18px}
   .reg{margin-top:30px;padding:16px;gap:12px;flex-direction:column;align-items:flex-start;font-size:13px;line-height:1.55}
-  .reg>span:last-child{padding-top:12px;border-top:1px solid #27272a;width:100%}
   .legal{margin-top:18px;flex-direction:column;align-items:flex-start;gap:6px;font-size:12.5px}
+}
+
+/* ===== Our Mission (independent of the hero) ===== */
+.mission{position:relative;padding:clamp(56px,7vw,100px) 0;text-align:center;overflow-x:clip}
+.mission::before{content:"";position:absolute;right:-8%;bottom:-30%;width:min(720px,70vw);height:min(520px,60vw);background:radial-gradient(closest-side,rgba(233,35,41,.07),rgba(233,35,41,0));pointer-events:none;z-index:0}
+.mission .wrap{position:relative;z-index:1}
+.ms-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(9,9,11,.04),0 8px 20px -14px rgba(9,9,11,.2);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.ms-dotmark{width:8px;height:8px;border-radius:50%;background:#E92329;flex:none}
+.ms-title{margin:clamp(20px,2.6vw,30px) auto 0;max-width:20ch;font-size:clamp(34px,6.2vw,72px);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--black);text-wrap:balance}
+.ms-title .ms-lead{display:block}
+.ms-words{display:grid;color:#E92329}
+.ms-word{grid-area:1/1;opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.ms-word.on{opacity:1;transform:none}
+.ms-tag{margin-top:clamp(16px,2vw,24px);font-size:clamp(15px,1.7vw,21px);font-weight:600;letter-spacing:.02em;color:#64748b}
+.ms-dots{display:flex;justify-content:center;gap:2px;margin-top:clamp(18px,2.2vw,26px)}
+.ms-dot{position:relative;width:22px;height:22px;border:0;background:none;cursor:pointer;padding:0}
+.ms-dot::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:999px;background:#cbd5e1;transform:translate(-50%,-50%);transition:width .3s var(--ease),background .3s var(--ease)}
+.ms-dot:hover::after{background:#94a3b8}
+.ms-dot.on::after{width:24px;background:#E92329}
+.ms-dot:focus-visible{outline:2px solid rgba(233,35,41,.5);outline-offset:2px;border-radius:8px}
+@media (max-width:640px){.ms-title{max-width:14ch}.ms-badge{font-size:11px;padding:7px 14px}}
+@media (prefers-reduced-motion:reduce){.ms-word{transform:none}}
+
+/* ===== Footer address box: right-hand tagline ===== */
+.reg{align-items:center}
+.reg>span:first-child{flex:1 1 320px;min-width:0}
+.reg .reg-tag{flex:0 0 auto;margin-left:auto;text-align:right;color:#71717a;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+@media (max-width:640px){
+  .reg>span:first-child{flex:none;width:100%}
+  .reg .reg-tag{margin-left:0;text-align:left;white-space:normal;width:100%;padding-top:12px;border-top:1px solid #27272a;font-size:12.5px}
 }
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -661,7 +690,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <!-- ============ 01 HERO ============ -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
-    <span class="badge-pill"><span class="dot" aria-hidden="true"></span>DPIIT-recognised startup<span class="sep" aria-hidden="true"></span><span class="navy">Bengaluru, India</span></span>
+    <span class="badge-pill"><span class="dot" aria-hidden="true"></span>Trust. Identity. Experience.<span class="sep" aria-hidden="true"></span><span class="navy">Bengaluru, India</span></span>
     <h1 id="hero-title">The AI trust layer for <span class="accent">modern commerce</span></h1>
     <p class="lead">Empowering digital brands and conscious consumers with privacy-first AI, instant post-purchase resolution and verified product reviews.</p>
     <div class="cta-row">
@@ -695,6 +724,20 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     </div>
   </div>
 </section>
+
+<!-- ============ OUR MISSION ============ -->
+<section id="mission" class="mission" aria-labelledby="mission-title">
+  <div class="wrap">
+    <span class="ms-badge"><span class="ms-dotmark" aria-hidden="true"></span>IN10C5 <span aria-hidden="true">•</span> Our mission</span>
+    <h2 id="mission-title" class="ms-title">
+      <span class="ms-lead">Together, let’s</span>
+      <span class="ms-words" id="ms-words"><span class="ms-word on">Protect our privacy.</span><span class="ms-word" aria-hidden="true">Build trust.</span><span class="ms-word" aria-hidden="true">Create authentic experiences.</span><span class="ms-word" aria-hidden="true">Empower consumers.</span><span class="ms-word" aria-hidden="true">Build wonderful brands.</span></span>
+    </h2>
+    <p class="ms-tag">Trust. Identity. Experience.</p>
+    <div class="ms-dots" id="ms-dots" role="group" aria-label="Choose a mission phrase"><button type="button" class="ms-dot on" data-i="0" aria-label="Show: Protect our privacy." aria-current="true"></button><button type="button" class="ms-dot" data-i="1" aria-label="Show: Build trust."></button><button type="button" class="ms-dot" data-i="2" aria-label="Show: Create authentic experiences."></button><button type="button" class="ms-dot" data-i="3" aria-label="Show: Empower consumers."></button><button type="button" class="ms-dot" data-i="4" aria-label="Show: Build wonderful brands."></button></div>
+  </div>
+</section>
+
 
 <!-- ============ 02 METRICS ============ -->
 <section class="metrics bg-slate" aria-label="Proven impact">
@@ -760,7 +803,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <g filter="url(#vbTick)"><path d="M8.4 12.3l2.6 2.6 4.8-5.2" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 </svg></div>
-        <div class="vb-trio"><div class="vb-mini"><span class="vb-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Authenticity</b></div><div class="vb-mini"><span class="vb-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M2 12a10 10 0 0 1 18-6"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M9 6.8a6 6 0 0 1 9 5.2v2"/></svg></span><b>Identity</b></div><div class="vb-mini"><span class="vb-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1"/></svg></span><b>Privacy</b></div></div>
+        <div class="vb-trio"><div class="vb-mini"><span class="vb-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M2 12a10 10 0 0 1 18-6"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M9 6.8a6 6 0 0 1 9 5.2v2"/></svg></span><b>Identity</b></div><div class="vb-mini"><span class="vb-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1"/></svg></span><b>Privacy</b></div><div class="vb-mini"><span class="vb-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><b>Experience</b></div></div>
       </div>
 
       <article class="vb-panel vb-consumers reveal">
@@ -971,7 +1014,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
           </div>
         </div>
         <div class="field grow"><label for="f-msg">Brief description</label><textarea id="f-msg" name="message"></textarea></div>
-        <label class="consent"><input type="checkbox" id="f-consent" required><span>I consent to IN10C5 India Private Limited collecting my information to contact me. Read the <a href="https://in10c5.com/privacy-policy/" target="_blank" rel="noopener">privacy policy</a>. *</span></label>
+        <label class="consent"><input type="checkbox" id="f-consent" required><span>I consent to IN10C5 India Private Limited collecting my information to contact me. Read the <a href="privacy-policy.html" target="_blank" rel="noopener">privacy policy</a>. *</span></label>
         <button class="btn btn-red" type="submit">Send request</button>
         <p class="form-status" id="form-status" role="status"></p>
       </form>
@@ -990,7 +1033,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       </div>
       <div><h4>Platform</h4><ul class="links"><li><a href="#solutions">Solutions</a></li><li><a href="#demo">AI demo</a></li><li><a href="#roi">ROI calculator</a></li><li><a href="#integrations">Integrations</a></li></ul></div>
       <div><h4>Company</h4><ul class="links"><li><a href="#about">About us</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Careers</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div class="foot-legal"><h4>Legal</h4><ul class="links"><li><a href="https://in10c5.com/privacy-policy/">Privacy policy</a></li><li><a href="#contact">Terms of use</a></li></ul>
+      <div class="foot-legal"><h4>Legal</h4><ul class="links"><li><a href="privacy-policy.html">Privacy policy</a></li><li><a href="terms.html">Terms of use</a></li></ul>
         <div class="socials" style="margin-top:20px">
           <a href="https://in.linkedin.com/company/in10c5-india" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5Z"/></svg></a>
           <a href="https://x.com/in10c5india" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.9L7.4 3.9H5.4L17.7 20Z"/></svg></a>
@@ -1000,7 +1043,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     </div>
     <div class="reg">
       <span><b>IN10C5 India Private Limited</b> · Unit 101, 139 Oxford Towers, HAL Old Airport Road, Bengaluru, Karnataka 560008, India</span>
-      <span><span class="dp">DPIIT-recognised startup</span></span>
+      <span class="reg-tag">Building Trust Globally</span>
     </div>
     <div class="legal"><span>© 2024–2026 IN10C5 India Private Limited. All rights reserved.</span><span>Made in Bengaluru, India</span></div>
   </div>
@@ -1319,6 +1362,26 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   label.htmlFor = btn.id;
   sel.parentNode.insertBefore(wrap, sel);
   wrap.appendChild(btn); wrap.appendChild(list); wrap.appendChild(sel);
+})();
+
+/* ---------- Our Mission: rotating phrase ---------- */
+(function(){
+  const words = Array.from(document.querySelectorAll('#ms-words .ms-word'));
+  const dots = Array.from(document.querySelectorAll('#ms-dots .ms-dot'));
+  const sec = document.getElementById('mission');
+  if (!words.length || !sec) return;
+  let i = 0, timer = null, paused = false;
+  const show = (n) => {
+    i = (n + words.length) % words.length;
+    words.forEach((w, k) => { const on = k === i; w.classList.toggle('on', on); if (on) w.removeAttribute('aria-hidden'); else w.setAttribute('aria-hidden', 'true'); });
+    dots.forEach((d, k) => { d.classList.toggle('on', k === i); if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+  };
+  const start = () => { stop(); timer = setInterval(() => { if (!paused && !document.hidden) show(i + 1); }, 3400); };
+  const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+  dots.forEach((d) => d.addEventListener('click', () => { show(+d.dataset.i); start(); }));
+  sec.addEventListener('focusin', () => { paused = true; });
+  sec.addEventListener('focusout', () => { paused = false; });
+  start();
 })();
 </script>
 </body>
